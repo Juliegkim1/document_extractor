@@ -19,11 +19,20 @@ class Document:
         :param table_text: if True, extract the text from document tables
         """
 
-        # use docx to read document xml
-        self.path = path
-        doc = docx.Document(self.path)
+        self.paragraphs = None
+        self.text = None
         self.sections = None
         self.table_text = None
+        self.author = None
+        self.last_modified_by = None
+        self.created = None
+        self.last_printed = None
+        self.revision = None
+        self.num_tables = None
+        self.path = path
+
+        # use docx to read document xml
+        doc = docx.Document(self.path)
 
         if doc_text:
             self.paragraphs = doc.paragraphs

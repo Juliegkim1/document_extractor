@@ -12,6 +12,7 @@ class Documents(Base):
 
     document_id = Column(Integer(), primary_key=True)
     path = Column(Text())
+    filename = Column(Text())
     document_text = Column(Text())
     table_text = Column(Text())
     last_modified_by = Column(Text())

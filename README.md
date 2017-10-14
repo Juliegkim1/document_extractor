@@ -3,6 +3,7 @@ Extract and structure text from word documents.
 
 document_extractor populates a database with two tables, Documents and Sections. The Documents table includes document properties and the full text of the document. The Sections table uses customizable hueristics to structure the documents into sections.
 
+
 ## Instructions
 
 #### 1. Update config.ini:
@@ -27,3 +28,17 @@ Run main.py to populate the database
 #### 5. Analysis (optional)
 
 To view results, open the analysis.ipynb Jupyter Notebook in the analysis directory. Pandas code is provided to connect to the database and view the results in the Documents and Sections tables.
+
+
+#### 6. Alter the way that sections are created
+
+Modify the following parameters (default is True for all) in the set_sections method in documents.document.py 
+
+    :param use_headings: uses a header formatting (e.g. table of contents)
+    :param use_capitalization: capitalization of every letter often indicates section header
+    :param use_bold: all words in a sentence are bold
+    :param use_underline: all words in a sentence are underlined
+    :param use_bold_until_colon: all words in a sentence are bold until a colon (e.g. SECTION: ...)
+    :param use_capital_letter_list: sentence starts with capital letter (e.g. A.)
+    :param use_roman_numeral_list: sentence starts with a roman numeral (e.g. II.)
+    :param ignore_bullets: ignore list of bullet points

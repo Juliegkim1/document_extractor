@@ -3,13 +3,27 @@ import string
 
 
 class Document:
-    """ structure the text from a single document """
+    """ structure the text from a single document
+     Document includes separate methods to extract and structure
+     sections, tables, and properties from a docx file
 
-    def __init__(self, path, doc_text=True, sections=True, doc_properties=True, table_text=True):
+     NOTE: only compatible with docx, not earlier version like doc
+     """
+
+    def __init__(self, path, doc_text=True, sections=True, table_text=True, doc_properties=True):
+        """
+        :param path: directory path to document
+        :param doc_text: if True, extract document text
+        :param sections: if True, structure document text into sections
+        :param doc_properties: if True, extract document properties (e.g. author)
+        :param table_text: if True, extract the text from document tables
+        """
 
         # use docx to read document xml
         self.path = path
         doc = docx.Document(self.path)
+        self.sections = None
+        self.table_text = None
 
         if doc_text:
             self.paragraphs = doc.paragraphs
@@ -55,8 +69,7 @@ class Document:
                      , use_roman_numeral_list=True
                      , ignore_bullets=True):
 
-        """
-        NOTE: Current heuristics to detect a section header
+        """ set sections using current heuristics to detect section headers
 
         :param use_headings: uses a header formatting (e.g. table of contents)
         :param use_capitalization: capitalization of every letter often indicates section header
@@ -151,7 +164,7 @@ class Document:
         :param p: paragraph
         :return section_header: boolean if paragraph is a section header
 
-        NOTES: there is not an exact method to determine a section header
+        NOTE: there is not an exact method to determine a section header
         due to inconsistencies in the way documents are created.
         This function uses heuristics (e.g. all CAPS) to determine sections
 

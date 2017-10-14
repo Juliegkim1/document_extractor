@@ -78,7 +78,9 @@ class Document:
                      , use_roman_numeral_list=True
                      , ignore_bullets=True):
 
-        """ set sections using current heuristics to detect section headers
+        """ Iterate through every paragraph in a document and group them into sections.
+        Sections are determined by Microsoft Word style formatting and other
+        optional heuristic parameters (listed below).
 
         :param use_headings: uses a header formatting (e.g. table of contents)
         :param use_capitalization: capitalization of every letter often indicates section header

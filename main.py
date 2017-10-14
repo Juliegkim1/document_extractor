@@ -43,7 +43,7 @@ def main():
             )
             session.add(section)
 
-    session.commit()
+        session.commit()
 
 
 if __name__ == "__main__": main()

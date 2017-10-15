@@ -24,6 +24,7 @@ def main():
         # create an instance (database row) for a annual report
         document = Documents(
             path=doc.path
+            , filename=filename
             , document_text=doc.text
             , table_text=doc.table_text
             , last_modified_by=doc.last_modified_by
@@ -37,7 +38,7 @@ def main():
 
         for section_name, section_text in doc.sections.items():
             section = Sections(
-                document_name=doc.path
+                filename=filename
                 , section_name=section_name
                 , section_text=section_text
             )

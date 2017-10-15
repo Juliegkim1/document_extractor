@@ -27,7 +27,7 @@ class Sections(Base):
     __tablename__ = 'SECTIONS'
 
     section_id = Column(Integer(), primary_key=True)
-    document_name = Column(Text())
+    filename = Column(Text())
     section_name = Column(Text())
     section_text = Column(Text())
 
